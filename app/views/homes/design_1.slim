@@ -1,0 +1,74 @@
+.row
+  .col-sm-12
+    p
+
+#design-1
+  - i = 0
+  - @data.each_slice(3) do |slice|
+    .row
+      .col-sm-4
+        - group = slice.first
+        - group_index = i*3
+        table(class="group-#{group_index}")
+          tr.receivers
+            td
+            - group.keys.each_with_index do |key, index|
+              td.receiver(class="#{key}" data-senders="#{@senders[group_index][key].map { |sender| ".sender.#{sender}"}.join(", ")}")= key
+          - group.keys.each_with_index do |key, index|
+            tr(class="#{key}")
+              td.sender(class="#{key}" data-receivers="#{@receivers[group_index][key].map { |receiver| ".receiver.#{receiver}"}.join(", ")}")= key
+              - group[key].each do |no_messages|
+                td.val(class="#{no_messages == group[key].max ? "max" : ""}" style="background-color: rgba(#{@colors[group_index].join(',')},#{no_messages*0.01});")
+                  span= no_messages
+      .col-sm-4
+        - group = slice.second
+        - group_index = i*3 + 1
+        table(class="group-#{group_index}")
+          tr.receivers
+            td
+            - group.keys.each_with_index do |key, index|
+              td.receiver(class="#{key}" data-senders="#{@senders[group_index][key].map { |sender| ".sender.#{sender}"}.join(", ")}")= key
+          - group.keys.each_with_index do |key, index|
+            tr(class="#{key}")
+              td.sender(class="#{key}" data-receivers="#{@receivers[group_index][key].map { |receiver| ".receiver.#{receiver}"}.join(", ")}")= key
+              - group[key].each do |no_messages|
+                td.val(class="#{no_messages == group[key].max ? "max" : ""}" style="background-color: rgba(#{@colors[group_index].join(',')},#{no_messages*0.01});")
+                  span= no_messages
+      .col-sm-4
+        - group = slice.last
+        - group_index = i*3 + 2
+        table(class="group-#{group_index}")
+          tr.receivers
+            td
+            - group.keys.each_with_index do |key, index|
+              td.receiver(class="#{key}" data-senders="#{@senders[group_index][key].map { |sender| ".sender.#{sender}"}.join(", ")}")= key
+          - group.keys.each_with_index do |key, index|
+            tr(class="#{key}")
+              td.sender(class="#{key}" data-receivers="#{@receivers[group_index][key].map { |receiver| ".receiver.#{receiver}"}.join(", ")}")= key
+              - group[key].each do |no_messages|
+                td.val(class="#{no_messages == group[key].max ? "max" : ""}" style="background-color: rgba(#{@colors[group_index].join(',')},#{no_messages*0.01});")
+                  span= no_messages
+    - i += 1
+
+javascript:
+  $(document).ready(function() {
+    $('[data-toggle="tooltip"]').tooltip();
+    $('.val').mouseover(function() {
+      $(this).find('span').show();
+    });
+    $('.val').mouseleave(function() {
+      $(this).find('span').hide();
+    });
+    $('.receiver').mouseover(function() {
+      $(this).parents('table').find($(this).data('senders')).css("background-color", "rgba(255, 225, 76, 1)");
+    });
+    $('.receiver').mouseleave(function() {
+      $($(this).data('senders')).css("background-color", "#fff");
+    });
+    $('.sender').mouseover(function() {
+      $(this).parents('table').find($(this).data('receivers')).css("background-color", "rgba(255, 225, 76, 0.5)");
+    });
+    $('.sender').mouseleave(function() {
+      $(this).parents('table').find($(this).data('receivers')).css("background", "none");
+    });
+  })

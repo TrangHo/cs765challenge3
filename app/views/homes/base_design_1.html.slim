@@ -1,0 +1,39 @@
+#base-design-1
+  - @data.each_slice(3) do |slice|
+    .row
+      .col-sm-4
+        table
+          - group = slice.first
+          tr
+            td
+            - group.keys.each_with_index do |key, index|
+              td= key
+          - group.keys.each_with_index do |key, index|
+            tr
+              td= key
+              - group[key].each do |no_messages|
+                td(class="#{no_messages == group[key].max ? "max" : ""} #{no_messages == 0 ? "zero-mess" : ""}")= no_messages
+      .col-sm-4
+        table
+          - group = slice.second
+          tr
+            td
+            - group.keys.each_with_index do |key, index|
+              td= key
+          - group.keys.each_with_index do |key, index|
+            tr
+              td= key
+              - group[key].each do |no_messages|
+                td(class="#{no_messages == group[key].max ? "max" : ""} #{no_messages == 0 ? "zero-mess" : ""}")= no_messages
+      .col-sm-4
+        table
+          - group = slice.last
+          tr
+            td
+            - group.keys.each_with_index do |key, index|
+              td= key
+          - group.keys.each_with_index do |key, index|
+            tr
+              td= key
+              - group[key].each do |no_messages|
+                td(class="#{no_messages == group[key].max ? "max" : ""} #{no_messages == 0 ? "zero-mess" : ""}")= no_messages

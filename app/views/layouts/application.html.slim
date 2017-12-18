@@ -12,6 +12,20 @@ html
     = javascript_include_tag 'https://d3js.org/d3.v4.min.js', 'data-turbolinks-track': 'reload'
 
   body
+    nav.navbar.navbar-default
+      .container.container-fluid
+        .navbar-header
+          = link_to "CS765 Challenge 3", root_path, class: "navbar-brand"
+        .collapse.navbar-collapse
+          ul.nav.navbar-nav
+            li(class="#{action_name == "base_design_1" ? "active" : ""}")
+              = link_to "Base Design 1", base_design_1_homes_path
+            li(class="#{action_name == "base_design_2" ? "active" : ""}")
+              = link_to "Base Design 2", base_design_2_homes_path
+            li(class="#{action_name == "design_1" ? "active" : ""}")
+              = link_to "Design 1", design_1_homes_path
+            li(class="#{action_name == "design_2" ? "active" : ""}")
+              = link_to "Design 2", design_2_homes_path
     .container
       #container
         .main-content
@@ -23,13 +37,3 @@ html
           span trangjan.ho@gmail.com
           br
           span © 2017 Trang Ho.
-
-javascript:
-  - if Rails.env.production?
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-    ga('create', 'UA-26295453-2', 'auto');
-    ga('send', 'pageview');
