@@ -1,0 +1,109 @@
+#design-1
+  .japan
+  .vietnam
+
+#design-2
+
+#design-3
+
+coffee:
+  JAPAN_POP = [ \
+  { "year": 1999, "pop": 69596.184 }, \
+  { "year": 2000, "pop": 69855.124 }, \
+  { "year": 2001, "pop": 70018.583 }, \
+  { "year": 2002, "pop": 70132.684 }, \
+  { "year": 2003, "pop": 70188.339 }, \
+  { "year": 2004, "pop": 70183.797 }, \
+  { "year": 2005, "pop": 70118.016 }, \
+  { "year": 2006, "pop": 69989.707 }, \
+  { "year": 2007, "pop": 69761.013 }, \
+  { "year": 2008, "pop": 69417.161 }, \
+  { "year": 2009, "pop": 68942.536 }, \
+
+  { "year": 2010, "pop": 68338.339 }, \
+  { "year": 2011, "pop": 67751.527 }, \
+  { "year": 2012, "pop": 67072.904 }, \
+  { "year": 2013, "pop": 66336.549 }, \
+  { "year": 2014, "pop": 65594.951 }, \
+  { "year": 2015, "pop": 64887.277 }]
+
+  JAPAN_GDP_GROWTH = [ \
+  { "year": 1999, "growth": -0.25198 },   \
+  { "year": 2000, "growth": 2.77954 },    \
+  { "year": 2001, "growth": 0.40625 },    \
+  { "year": 2002, "growth": 0.1181 },   \
+  { "year": 2003, "growth": 1.52824 },    \
+  { "year": 2004, "growth": 2.20473 },    \
+  { "year": 2005, "growth": 1.66275 },    \
+  { "year": 2006, "growth": 1.41998 },    \
+  { "year": 2007, "growth": 1.65428 },    \
+  { "year": 2008, "growth": -1.09348 },   \
+  { "year": 2009, "growth": -5.41712 },   \
+
+  { "year": 2010, "growth": 4.19229 },    \
+  { "year": 2011, "growth": -0.11546 },   \
+  { "year": 2012, "growth": 1.49503 },    \
+  { "year": 2013, "growth": 2.00049 },    \
+  { "year": 2014, "growth": 0.33566 },    \
+  { "year": 2015, "growth": 1.21944 }]
+
+  VIETNAM_POP = [ \
+  { "year": 1999, "pop": 32778.348 },     \
+  { "year": 2000, "pop": 33700.329 },     \
+  { "year": 2001, "pop": 34739.827 },     \
+  { "year": 2002, "pop": 35697.285 },     \
+  { "year": 2003, "pop": 36619.729 },     \
+  { "year": 2004, "pop": 37580.127 },     \
+  { "year": 2005, "pop": 38611.883 },     \
+  { "year": 2006, "pop": 39583.368 },     \
+  { "year": 2007, "pop": 40629.132 },     \
+  { "year": 2008, "pop": 41732.989 },     \
+  { "year": 2009, "pop": 42864.841 },     \
+
+  { "year": 2010, "pop": 44012.535 },     \
+  { "year": 2011, "pop": 45157.86 },     \
+  { "year": 2012, "pop": 46340.088 },     \
+  { "year": 2013, "pop": 47524.915 },     \
+  { "year": 2014, "pop": 48683.71 },     \
+  { "year": 2015, "pop": 49795.827 }]
+
+  VIETNAM_GDP_GROWTH = [  \
+  { "year": 1999, "growth": 4.77359 },    \
+  { "year": 2000, "growth": 6.78732 },    \
+  { "year": 2001, "growth": 6.19289 },    \
+  { "year": 2002, "growth": 6.32082 },    \
+  { "year": 2003, "growth": 6.89906 },    \
+  { "year": 2004, "growth": 7.53641 },    \
+  { "year": 2005, "growth": 7.54725 },    \
+  { "year": 2006, "growth": 6.97795 },    \
+  { "year": 2007, "growth": 7.1295 },    \
+  { "year": 2008, "growth": 5.66177 },    \
+  { "year": 2009, "growth": 5.3979 },    \
+
+  { "year": 2010, "growth": 6.42324 },    \
+  { "year": 2011, "growth": 6.2403 },    \
+  { "year": 2012, "growth": 5.24737 },    \
+  { "year": 2013, "growth": 5.42188 },    \
+  { "year": 2014, "growth": 5.98365 },    \
+  { "year": 2015, "growth": 6.67929 }]
+
+  $ ->
+    design1Japan = d3.select("#design-1 .japan")
+    WIDTH = 1000
+    HEIGHT = 500
+    MARGINS = {
+      top: 20,
+      right: 20,
+      bottom: 20,
+      left: 50
+    }
+
+    xScale = d3.scale.linear().range([MARGINS.left, WIDTH - MARGINS.right]).domain([2000,2010])
+
+    yScale = d3.scale.linear().range([HEIGHT - MARGINS.top, MARGINS.bottom]).domain([134,215])
+
+    xAxis = d3.svg.axis().scale(xScale)
+    yAxis = d3.svg.axis().scale(yScale)
+
+
+  design1Japan.append("svg:g").call(xAxis)

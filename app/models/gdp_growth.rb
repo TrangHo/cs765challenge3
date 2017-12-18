@@ -1,0 +1,2 @@
+class GdpGrowth < Data
+end

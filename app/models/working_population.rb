@@ -1,0 +1,2 @@
+class WorkingPopulation < Data
+end
