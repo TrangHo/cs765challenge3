@@ -44,7 +44,7 @@ javascript:
                       .selectAll("line")
                       .data(graph.links)
                       .enter().append("line")
-                      .attr('stroke','black')
+                      .attr('stroke','#999')
                       .attr("stroke-width", function(d) { return d.value*0.02; });
 
         var node = svg.append("g")
@@ -98,10 +98,14 @@ javascript:
         d.fx = null;
         d.fy = null;
       }
+
+      return svg;
     }
 
+
+    var svg_graphs = [];
     for(var i = 0; i < 6; i++) {
-      draw(i);
+      svg_graphs.push(draw(i));
     }
 
   });
